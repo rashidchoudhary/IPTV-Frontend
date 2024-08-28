@@ -24,7 +24,6 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 const Login = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
 
   React.useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -40,10 +39,6 @@ const Login = () => {
     event.preventDefault();
   };
 
-  const handleRememberMeChange = (event) => {
-    setRememberMe(event.target.checked);
-  };
-
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -56,11 +51,9 @@ const Login = () => {
       const response = await axios.post('http://localhost:2024/user/login', credentials);
 
       if (response.status === 200 && response.data.data.token) {
-        if (rememberMe) {
-          localStorage.setItem("token", response.data.data.token);
-        } else {
-          sessionStorage.setItem("token", response.data.data.token);
-        }
+        
+       localStorage.setItem("token", response.data.data.token);
+         
         toast.success("Login successful! Redirecting...", {
           onClose: () => {
             navigate("/");
@@ -162,9 +155,7 @@ const Login = () => {
               >
                 <FormControlLabel
                   control={
-                    <Checkbox 
-                      checked={rememberMe}
-                      onChange={handleRememberMeChange} 
+                    <Checkbox  
                       color="primary"
                     />
                   }
