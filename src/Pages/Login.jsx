@@ -42,18 +42,25 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    if (!email || !password) {
+      toast.error("Please fill out all fields.");
+      return;
+    }
+
     const credentials = {
-      email: e.target.email.value,
-      password: e.target.password.value,
+      email,
+      password,
     };
 
     try {
       const response = await axios.post('http://localhost:2024/user/login', credentials);
 
       if (response.status === 200 && response.data.data.token) {
-        
-       localStorage.setItem("token", response.data.data.token);
-         
+        localStorage.setItem("token", response.data.data.token);
+
         toast.success("Login successful! Redirecting...", {
           onClose: () => {
             navigate("/");
