@@ -1,28 +1,45 @@
-// redux/app/genreSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Fetch genres from the backend
+const getJWT = () => {
+    return localStorage.getItem('token');
+};
+
 export const fetchGenres = createAsyncThunk('genres/fetchGenres', async () => {
-    const response = await axios.get('http://localhost:2024/genre');
-    return response.data.data; // Ensure this matches your backend response
+    const response = await axios.get('http://localhost:2024/genre', {
+        headers: {
+            Authorization: `Bearer ${getJWT()}`,
+        },
+    });
+    return response.data.data; 
 });
 
 // Add a new genre
 export const addGenre = createAsyncThunk('genres/addGenre', async (genre) => {
-    const response = await axios.post('http://localhost:2024/genre', genre);
-    return response.data.data; // Ensure this matches your backend response
+    const response = await axios.post('http://localhost:2024/genre', genre, {
+        headers: {
+            Authorization: `Bearer ${getJWT()}`,
+        },
+    });
+    return response.data.data; 
 });
 
 // Edit an existing genre
 export const editGenre = createAsyncThunk('genres/editGenre', async ({ id, name }) => {
-    const response = await axios.patch(`http://localhost:2024/genre/${id}`, { name });
-    return response.data.data; // Ensure this matches your backend response
+    const response = await axios.patch(`http://localhost:2024/genre/${id}`, { name }, {
+        headers: {
+            Authorization: `Bearer ${getJWT()}`,
+        },
+    });
+    return response.data.data;
 });
 
-// Delete a genre
 export const deleteGenre = createAsyncThunk('genres/deleteGenre', async (id) => {
-    await axios.delete(`http://localhost:2024/genre/${id}`);
+    await axios.delete(`http://localhost:2024/genre/${id}`, {
+        headers: {
+            Authorization: `Bearer ${getJWT()}`,
+        },
+    });
     return id;
 });
 

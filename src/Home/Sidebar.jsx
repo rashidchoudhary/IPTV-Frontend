@@ -1,13 +1,14 @@
 import React from 'react';
 import { Box, List, ListItem, ListItemText, ListItemIcon } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import CategoryIcon from '@mui/icons-material/Category';
 import MovieIcon from '@mui/icons-material/Movie';
 import TvIcon from '@mui/icons-material/Tv';
-import EpisodeIcon from '@mui/icons-material/Theaters'; // Custom icon for Episode
+import EpisodeIcon from '@mui/icons-material/Theaters'; 
 
 const Sidebar = () => {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleNavigation = (path) => {
         navigate(path);
@@ -20,7 +21,7 @@ const Sidebar = () => {
                 height: '100vh',
                 backgroundColor: '#3f51b5',
                 color: 'white',
-                paddingTop: '41px', // Offset for AppBar
+                paddingTop: '41px',
                 position: 'fixed',
                 top: 0,
                 left: 0,
@@ -32,9 +33,9 @@ const Sidebar = () => {
                     onClick={() => handleNavigation('/')}
                     sx={{
                         cursor: "pointer",
-                        backgroundColor: '#303f9f', // Active button background
+                        backgroundColor: location.pathname === '/' ? '#303f9f' : 'transparent', 
                         '&:hover': {
-                            backgroundColor: '#283593', // Darker shade on hover
+                            backgroundColor: '#283593',
                         },
                     }}
                 >
@@ -48,9 +49,9 @@ const Sidebar = () => {
                     onClick={() => handleNavigation('/series')}
                     sx={{
                         cursor: "pointer",
+                        backgroundColor: location.pathname === '/series' ? '#303f9f' : 'transparent', 
                         '&:hover': {
-                            
-                            backgroundColor: '#283593', // Darker shade on hover
+                            backgroundColor: '#283593', 
                         },
                     }}
                 >
@@ -64,8 +65,9 @@ const Sidebar = () => {
                     onClick={() => handleNavigation('/season')}
                     sx={{
                         cursor: "pointer",
+                        backgroundColor: location.pathname === '/season' ? '#303f9f' : 'transparent', 
                         '&:hover': {
-                            backgroundColor: '#283593', // Darker shade on hover
+                            backgroundColor: '#283593', 
                         },
                     }}
                 >
@@ -79,6 +81,7 @@ const Sidebar = () => {
                     onClick={() => handleNavigation('/episode')}
                     sx={{
                         cursor: "pointer",
+                        backgroundColor: location.pathname === '/episode' ? '#303f9f' : 'transparent',
                         '&:hover': {
                             backgroundColor: '#283593', 
                         },

@@ -1,11 +1,14 @@
 import React from 'react';
+import { Box } from '@mui/material';
 import Header from './Header';
 import Sidebar from './Sidebar';
-import { useNavigate } from 'react-router-dom';
 import GenreIndex from '../genre/GenreIndex';
+import SeriesIndex from '../series/SeriesIndex';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Home = () => {
     const navigate = useNavigate();
+    const location = useLocation(); 
 
     React.useEffect(() => {
         if (!localStorage.getItem('token')) {
@@ -18,11 +21,27 @@ const Home = () => {
         navigate('/login');
     };
 
+    
+    const renderIndex = () => {
+        switch (location.pathname) {
+            case '/':
+                return <GenreIndex />;
+            case '/series':
+                return <SeriesIndex />;
+            case '/season':
+                return <div>Season Index</div>; 
+            case '/episode':
+                return <div>Episode Index</div>;
+            default:
+                return <GenreIndex />;
+        }
+    };
+
     return (
         <>
             <Header onLogout={logout} />
             <Sidebar />
-            <GenreIndex/>            
+            {renderIndex()}
         </>
     );
 };
