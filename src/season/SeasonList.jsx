@@ -82,13 +82,13 @@ const SeasonList = () => {
             title: 'Season Name',
             dataIndex: 'name',
             key: 'name',
-            width: '60%',
+            width: '30%',
         },
         {
             title: 'Description',
             dataIndex: 'description',
             key: 'description',
-            width: '20%',
+            width: '50%',
         },
         {
             title: 'Actions',
