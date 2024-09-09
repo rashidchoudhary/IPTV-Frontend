@@ -27,7 +27,7 @@ const AddEditSeries = ({ isModalVisible, handleCancel, editMode, editId }) => {
                     form.setFieldsValue({
                         name: seriesDetails.name,
                         description: seriesDetails.description,
-                        genre_ids: seriesDetails.genre_ids.map((id) => id.toString()), // Ensure genre_ids are in string format
+                        genre_ids: seriesDetails.genre_ids.map((id) => id.toString()),
                     });
 
                     if (seriesDetails.file) {
@@ -36,7 +36,7 @@ const AddEditSeries = ({ isModalVisible, handleCancel, editMode, editId }) => {
                                 uid: '-1',
                                 name: 'trailer-thumbnail.jpg',
                                 status: 'done',
-                                url: seriesDetails.file, // Adjust this URL
+                                url: seriesDetails.file, 
                             },
                         ]);
                     }
@@ -54,13 +54,12 @@ const AddEditSeries = ({ isModalVisible, handleCancel, editMode, editId }) => {
     }, [editMode, editId, form, dispatch]);
 
     const handleSubmit = async (values) => {
-        console.log('genre_ids before sending:', values.genre_ids); // Debugging line
+        console.log('genre_ids before sending:', values.genre_ids);
 
         const formData = new FormData();
         formData.append('name', values.name);
         formData.append('description', values.description);
 
-        // Append each genre_id individually to the FormData
         values.genre_ids.forEach((id, index) => {
             formData.append(`genre_ids[${index}]`, id);
         });
@@ -77,7 +76,7 @@ const AddEditSeries = ({ isModalVisible, handleCancel, editMode, editId }) => {
                 await dispatch(addSeries(formData)).unwrap();
                 message.success('Series added successfully');
             }
-            handleCancel(); // Close the modal after successful submission
+            handleCancel(); 
         } catch (error) {
             console.error('Error submitting series:', error);
             message.error('Failed to submit series. Please try again.');
@@ -93,7 +92,7 @@ const AddEditSeries = ({ isModalVisible, handleCancel, editMode, editId }) => {
             setFileList([]);
         },
         beforeUpload: () => {
-            return false; // Prevent automatic upload
+            return false;
         },
         fileList,
         onChange: handleFileUploadChange,
@@ -146,7 +145,7 @@ const AddEditSeries = ({ isModalVisible, handleCancel, editMode, editId }) => {
                         mode="multiple"
                         placeholder="Select genres"
                         allowClear
-                        loading={loading} // Show loading spinner if genres are still loading
+                        loading={loading} 
                     >
                         {genres.map((genre) => (
                             <Option key={genre._id} value={genre._id}>

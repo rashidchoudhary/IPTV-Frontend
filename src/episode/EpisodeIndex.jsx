@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import SeasonList from './SeasonList';
+import EpisodeList from './EpisodeList';
 
-const SeasonIndex = () => {
+const EpisodeIndex = () => {
     const navigate = useNavigate();
 
     React.useEffect(() => {
@@ -20,10 +20,10 @@ const SeasonIndex = () => {
     return (
         <>            
             <Box component="main" sx={{ flexGrow: 1, p: 3, marginLeft: '70px', paddingTop: 'px', width: "100%" }}>
-                <SeasonList /> 
+                <EpisodeList />
             </Box>
         </>
     );
 };
 
-export default SeasonIndex;
+export default EpisodeIndex;

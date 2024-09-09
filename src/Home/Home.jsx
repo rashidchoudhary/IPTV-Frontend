@@ -5,6 +5,7 @@ import Sidebar from './Sidebar';
 import GenreIndex from '../genre/GenreIndex';
 import SeriesIndex from '../series/SeriesIndex';
 import SeasonIndex from '../season/SeasonIndex';
+import EpisodeIndex from '../episode/EpisodeIndex';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const Home = () => {
@@ -32,7 +33,7 @@ const Home = () => {
             case '/season':
                 return <SeasonIndex/>; 
             case '/episode':
-                return <div>Episode Index</div>;
+                return <EpisodeIndex />;
             default:
                 return <GenreIndex />;
         }

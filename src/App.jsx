@@ -19,6 +19,7 @@ function App() {
       <Route path="/register" element={<Register />}/>
       <Route path="/series" element={<Home />} />
       <Route path="/season" element={<Home />} />
+      <Route path="/episode" element={<Home />} />
     </Routes>
     </BrowserRouter>
   );

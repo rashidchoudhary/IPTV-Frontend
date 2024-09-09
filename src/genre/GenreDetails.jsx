@@ -8,9 +8,9 @@ const GenreDetails = ({ genre, handleBack }) => {
     return (
         <Card
             style={{ 
-                width: '90vw', // Adjust width as needed
-                maxWidth: '600px', // Optional: Restricts maximum width
-                height: '60vh', // Adjust height as needed
+                width: '90vw',
+                maxWidth: '600px', 
+                height: '60vh', 
                 margin: 'auto',
                 display: 'flex',
                 flexDirection: 'column',
@@ -20,8 +20,8 @@ const GenreDetails = ({ genre, handleBack }) => {
                 padding: '20px',
                 boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
                 borderRadius: '10px',
-                backgroundColor: '#fff', // Optional: Ensures the card has a white background
-                overflow: 'auto' // Optional: Ensures overflow is managed
+                backgroundColor: '#fff', 
+                overflow: 'auto' 
             }}
         >
             <BookOutlined style={{ fontSize: '64px', color: '#1890ff' }} />

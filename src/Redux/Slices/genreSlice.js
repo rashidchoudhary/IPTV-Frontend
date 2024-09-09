@@ -14,7 +14,6 @@ export const fetchGenres = createAsyncThunk('genres/fetchGenres', async () => {
     return response.data.data; 
 });
 
-// Add a new genre
 export const addGenre = createAsyncThunk('genres/addGenre', async (genre) => {
     const response = await axios.post('http://localhost:2024/genre', genre, {
         headers: {
@@ -24,7 +23,6 @@ export const addGenre = createAsyncThunk('genres/addGenre', async (genre) => {
     return response.data.data; 
 });
 
-// Edit an existing genre
 export const editGenre = createAsyncThunk('genres/editGenre', async ({ id, name }) => {
     const response = await axios.patch(`http://localhost:2024/genre/${id}`, { name }, {
         headers: {

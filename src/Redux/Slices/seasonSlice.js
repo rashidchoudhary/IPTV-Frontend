@@ -5,52 +5,48 @@ const getJWT = () => {
     return localStorage.getItem('token');
 };
 
-// Fetch all seasons
 export const fetchSeasons = createAsyncThunk('seasons/fetchSeasons', async () => {
     const response = await axios.get('http://localhost:2024/season', {
         headers: {
-            Authorization: `Bearer ${getJWT()}`, // Fixed template literal syntax
+            Authorization: `Bearer ${getJWT()}`, 
         },
     });
-    return response.data.data; // Ensure this returns the correct data array
+    return response.data.data; 
 });
 
 // Fetch a season by ID
 export const fetchSeasonById = createAsyncThunk('seasons/fetchSeasonById', async (id) => {
     console.log("Season id in slice is", id)
-    const response = await axios.get(`http://localhost:2024/season/${id}`, { // Fixed template literal syntax
+    const response = await axios.get(`http://localhost:2024/season/${id}`, { 
         headers: {
-            Authorization: `Bearer ${getJWT()}`, // Fixed template literal syntax
+            Authorization: `Bearer ${getJWT()}`,
         },
     });
     return response.data.data;
 });
 
-// Add a new season
 export const addSeason = createAsyncThunk('seasons/addSeason', async (season) => {
     const response = await axios.post('http://localhost:2024/season', season, {
         headers: {
-            Authorization: `Bearer ${getJWT()}`, // Fixed template literal syntax
+            Authorization: `Bearer ${getJWT()}`,
         },
     });
     return response.data.data;
 });
 
-// Edit an existing season
 export const editSeason = createAsyncThunk('seasons/editSeason', async ({ id, name, description, series_id }) => {
     const response = await axios.patch(`http://localhost:2024/season/${id}`, { name, description, series_id }, { // Fixed template literal syntax
         headers: {
-            Authorization: `Bearer ${getJWT()}`, // Fixed template literal syntax
+            Authorization: `Bearer ${getJWT()}`,
         },
     });
     return response.data.data;
 });
 
-// Delete a season
 export const deleteSeason = createAsyncThunk('seasons/deleteSeason', async (id) => {
-    await axios.delete(`http://localhost:2024/season/${id}`, { // Fixed template literal syntax
+    await axios.delete(`http://localhost:2024/season/${id}`, { 
         headers: {
-            Authorization: `Bearer ${getJWT()}`, // Fixed template literal syntax
+            Authorization: `Bearer ${getJWT()}`, 
         },
     });
     return id;
@@ -60,7 +56,7 @@ const seasonSlice = createSlice({
     name: 'seasons',
     initialState: {
         seasons: [],
-        season: null, // To hold the single season fetched by ID
+        season: null, 
         loading: false,
         error: null,
     },

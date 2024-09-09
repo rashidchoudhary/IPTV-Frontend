@@ -14,7 +14,7 @@ const SeriesDetails = ({ seriesId, handleBack }) => {
         if (seriesId) {
             dispatch(fetchSeriesById(seriesId));
         }
-        dispatch(fetchGenres()); // Fetch genres on component mount
+        dispatch(fetchGenres()); 
     }, [dispatch, seriesId]);
 
     const series = useSelector((state) =>

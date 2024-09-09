@@ -39,7 +39,7 @@ const GenreList = () => {
             dispatch(addGenre({ name: newGenreName }))
                 .then(() => {
                     message.success('Genre added successfully');
-                    dispatch(fetchGenres()); // Refresh the list
+                    dispatch(fetchGenres()); 
                 })
                 .catch(() => {
                     message.error('Failed to add genre');
@@ -60,7 +60,7 @@ const GenreList = () => {
             dispatch(editGenre({ id: editId, name: newGenreName }))
                 .then(() => {
                     message.success('Genre updated successfully');
-                    dispatch(fetchGenres()); // Refresh the list
+                    dispatch(fetchGenres());
                 })
                 .catch(() => {
                     message.error('Failed to update genre');
@@ -73,7 +73,7 @@ const GenreList = () => {
         dispatch(deleteGenre(id))
             .then(() => {
                 message.success('Genre deleted successfully');
-                dispatch(fetchGenres()); // Refresh the list
+                dispatch(fetchGenres()); 
             })
             .catch(() => {
                 message.error('Failed to delete genre');
@@ -118,7 +118,6 @@ const GenreList = () => {
 
     return (
         <div style={{ padding: '20px', width: '100%', margin: 'auto' }}>
-            {/* Hide this section if in view or modal mode */}
             {!viewMode && !isModalVisible && (
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                     <h3 style={{ margin: 0 }}>Genre List</h3>
@@ -157,7 +156,7 @@ const GenreList = () => {
                         dataSource={genres}
                         rowKey={(record) => record._id}
                         bordered
-                        pagination={{ pageSize: 4 }}
+                        pagination={{ pageSize: 3 }}
                         style={{ borderRadius: '15px', overflow: 'hidden', width: '100%' }}
                     />
                 </div>

@@ -27,7 +27,7 @@ const SeasonDetails = ({ season, handleBack }) => {
     }, [season, seriesList]);
 
     if (!season) {
-        return null; // or some loading state
+        return null;
     }
 
     return (

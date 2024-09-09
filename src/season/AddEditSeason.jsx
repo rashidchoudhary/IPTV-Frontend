@@ -8,14 +8,14 @@ const AddEditSeason = ({
     newSeasonData,
     handleAddSeason,
     handleUpdateSeason,
-    seriesList // List of series for the dropdown
+    seriesList 
 }) => {
     const [form] = Form.useForm();
     const [currentId, setCurrentId] = useState(null);
     
     useEffect(() => {
         if (editMode) {
-            setCurrentId(newSeasonData._id); // Set ID for edit mode
+            setCurrentId(newSeasonData._id);
             form.setFieldsValue({
                 name: newSeasonData.name,
                 description: newSeasonData.description,
@@ -28,7 +28,7 @@ const AddEditSeason = ({
 
     const onFinish = (values) => {
         if (editMode) {
-            handleUpdateSeason({ ...values, _id: currentId }); // Pass ID when updating
+            handleUpdateSeason({ ...values, _id: currentId }); 
         } else {
             handleAddSeason(values);
         }
